@@ -123,7 +123,7 @@ If you like this project, please consider giving it a ⭐ on GitHub.
 
 ## 📄 License
 
-This project is released under the **MIT License**.
+This project is released under the [MIT License](LICENSE).
 
 ---
 
