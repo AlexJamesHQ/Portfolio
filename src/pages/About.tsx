@@ -28,7 +28,7 @@ export default function AboutPage(): ReactNode {
                   hoverEffect="lift"
                 />
               </div>
-              <div className="text-[18px] sm:text-[20px] font-medium tracking-tight text-foreground/90">
+              <div className="text-[18px] sm:text-[20px] font-medium tracking-tight text-foreground/90 break-words">
                 <SplitText
                   text="普通のコーダーとゲーマーの男の子です"
                   tag="p"
@@ -43,13 +43,10 @@ export default function AboutPage(): ReactNode {
 
             <div className="mt-8 space-y-6 text-[17px] leading-[1.7] tracking-tight text-foreground/75 sm:text-[18px]">
               <p>
-                Just an ordinary coder and gamer at heart, focused on crafting clean interfaces, interactive experiences, and software that feels calm, considered, and quietly fast.
+                Just an ordinary coder and gamer at heart, focused on crafting clean interfaces, interactive experiences, and fast software.
               </p>
               <p>
-                When I&rsquo;m not writing code or building creative digital tools, you&rsquo;ll usually find me gaming, experimenting with WebGL shaders, or exploring modern frontend architectures.
-              </p>
-              <p>
-                Always curious, always building, and excited to collaborate on new ideas and open-source projects.
+                When not coding, I am usually gaming, experimenting with WebGL shaders, or exploring modern frontend architectures.
               </p>
             </div>
           </div>
