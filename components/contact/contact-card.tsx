@@ -80,7 +80,7 @@ export function ContactCard(): ReactNode {
                     href="https://github.com/cognitiveshadows03"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[12px] tracking-tight text-foreground/50 hover:text-foreground transition-colors"
+                    className="text-[12px] tracking-tight text-foreground/50 hover:text-foreground transition-colors mt-0.5"
                   >
                     Team &bull; Cognitive Shadows
                   </a>
