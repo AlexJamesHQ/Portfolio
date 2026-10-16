@@ -15,9 +15,9 @@ export type Metadata = {
 };
 
 export const siteConfig = {
-  name: "Alex James",
+  name: "Alex James — 普通のコーダーとゲーマーの男の子です",
   description:
-    "A modern, accessible portfolio built by Alex James, Design Engineer and Full-Stack Developer.",
+    "Alex James — 普通のコーダーとゲーマーの男の子です (Ordinary coder & gamer boy). Interfaces, interactive experiences, and software that feel calm, considered, and quietly fast.",
   url: "https://example.com",
   ogImage: "https://github.com/AlexJamesHQ.png",
   creator: "@AlexJamesHQ",
