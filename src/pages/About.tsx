@@ -28,17 +28,6 @@ export default function AboutPage(): ReactNode {
                   hoverEffect="lift"
                 />
               </div>
-              <div className="text-[18px] sm:text-[20px] font-medium tracking-tight text-foreground/90 break-words">
-                <SplitText
-                  text="普通のコーダーとゲーマーの男の子です"
-                  tag="p"
-                  delay={45}
-                  duration={1.1}
-                  splitType="chars"
-                  effect="rise"
-                  hoverEffect="lift"
-                />
-              </div>
             </div>
 
             <div className="mt-8 space-y-6 text-[17px] leading-[1.7] tracking-tight text-foreground/75 sm:text-[18px]">
