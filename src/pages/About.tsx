@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import { Education } from "@/components/about/education";
 import { Experience } from "@/components/about/experience";
 import { PolaroidStrip } from "@/components/about/polaroid-strip";
 import { Skills } from "@/components/about/skills";
@@ -46,7 +45,6 @@ export default function AboutPage(): ReactNode {
         <FadeIn delay={0.1}>
           <div className="flex flex-col gap-10">
             <Experience />
-            <Education />
             <Skills />
             <Stack />
           </div>
