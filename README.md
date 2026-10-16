@@ -1,8 +1,19 @@
-# Alex James — Portfolio & Creative Engineering Showcase
+# Alex James — 普通のコーダーとゲーマーの男の子です
 
-A personal portfolio and creative engineering showcase built with **React 19**, **TypeScript**, **Tailwind CSS v4**, **GSAP**, **Motion**, **Matter.js**, and **OGL (WebGL)**.
+> **Ordinary coder & gamer boy.** A personal portfolio and creative engineering showcase built with **React 19**, **TypeScript**, **Tailwind CSS v4**, **GSAP**, **Motion**, **Matter.js**, and **OGL (WebGL)**.
 
 Designed for fluid interactions, typography animations, and real-time physics.
+
+---
+
+## 🚀 Live Demo & Links
+
+- **Lead Developer:** Alex James
+- **GitHub:** [https://github.com/AlexJamesHQ](https://github.com/AlexJamesHQ)
+- **Team:** [Cognitive Shadows](https://github.com/cognitiveshadows03)
+- **Telegram Channel:** [https://t.me/ALEX_JAMES_DEV](https://t.me/ALEX_JAMES_DEV)
+- **Email:** [alexjames7830@gmail.com](mailto:alexjames7830@gmail.com)
+- **Featured Project (LunarTune):** [https://lunartune-03.vercel.app/](https://lunartune-03.vercel.app/)
 
 ---
 
