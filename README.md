@@ -5,16 +5,6 @@
 Designed for fluid interactions, typography animations, and real-time physics.
 
 ---
-
-## 🚀 Live Demo & Links
-
-- **Lead Developer:** Alex James
-- **GitHub:** [https://github.com/AlexJamesHQ](https://github.com/AlexJamesHQ)
-- **Team:** [Cognitive Shadows](https://github.com/cognitiveshadows03)
-- **Telegram Channel:** [https://t.me/ALEX_JAMES_DEV](https://t.me/ALEX_JAMES_DEV)
-- **Email:** [alexjames7830@gmail.com](mailto:alexjames7830@gmail.com)
-- **Featured Project (LunarTune):** [https://lunartune-03.vercel.app/](https://lunartune-03.vercel.app/)
-
 ---
 
 ## ✨ Key Features
