@@ -55,12 +55,6 @@ const ENTRIES: Entry[] = [
     slug: "airbnb",
     brand: "#FF5A5F",
   },
-  {
-    company: "Freelance",
-    role: "Designer & Developer",
-    period: "2015 – 2017",
-    brand: "#0AE448",
-  },
 ];
 
 const COLLAPSED_COUNT = 2.5;
