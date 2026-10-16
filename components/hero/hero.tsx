@@ -29,7 +29,7 @@ export function Hero(): ReactNode {
             <h1 className="text-[2.75rem] font-medium leading-[1.05] tracking-tight text-foreground md:text-[2.5rem] lg:text-[3.65rem]">
               <span className="block">
                 <SplitText
-                  text="Design engineer &"
+                  text="Coder & Gamer"
                   tag="span"
                   delay={35}
                   duration={1}
@@ -40,7 +40,7 @@ export function Hero(): ReactNode {
               </span>
               <span className="block">
                 <SplitText
-                  text="AI enthusiast"
+                  text="Digital Craftsman"
                   tag="span"
                   delay={40}
                   duration={1}
@@ -51,11 +51,11 @@ export function Hero(): ReactNode {
               </span>
             </h1>
 
-            <div className="max-w-[34ch] text-[22px] leading-[1.4] tracking-tight text-foreground/65">
+            <div className="max-w-[34ch] text-[20px] sm:text-[22px] leading-[1.4] tracking-tight text-foreground/70">
               <SplitText
-                text="Independent engineer focused on interfaces that feel calm, considered, and quietly fast."
+                text="An ordinary coder and gamer boy building interfaces and experiences that feel calm, considered, and quietly fast."
                 tag="p"
-                delay={18}
+                delay={15}
                 duration={1.1}
                 splitType="words"
                 effect="rise"
