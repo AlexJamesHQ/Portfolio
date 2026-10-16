@@ -76,6 +76,9 @@ export function ContactCard(): ReactNode {
                   <p className="text-[13px] tracking-tight text-foreground/80 font-medium">
                     Lead Developer Alex James
                   </p>
+                  <p className="text-[11px] tracking-tight text-foreground/45 font-mono">
+                    普通のコーダーとゲーマーの男の子です
+                  </p>
                   <a
                     href="https://github.com/cognitiveshadows03"
                     target="_blank"
