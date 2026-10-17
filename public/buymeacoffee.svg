@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 500" width="600" height="500">
+  <defs>
+    <!-- Sticker outer glow / white offset border -->
+    <filter id="stickerGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feMorphology operator="dilate" radius="12" in="SourceAlpha" result="outer"/>
+      <feFlood flood-color="#FFFFFF" flood-opacity="1" result="whiteColor"/>
+      <feComposite in="whiteColor" in2="outer" operator="in" result="outline"/>
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.18" result="shadow"/>
+      <feMerge>
+        <feMergeNode in="shadow"/>
+        <feMergeNode in="outline"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Centered Sticker Group with generous left padding -->
+  <g transform="translate(85, 20)" filter="url(#stickerGlow)">
+    
+    <!-- Yellow Heart on Left -->
+    <g transform="translate(45, 90) scale(1.1)">
+      <!-- Heart white sticker backing / black outline -->
+      <path d="M55,15 C55,5 40,-2 28,10 C16,-2 1,5 1,15 C1,30 28,45 28,45 C28,45 55,30 55,15 Z" fill="#000000"/>
+      <path d="M55,13 C55,3 40,-4 28,8 C16,-4 1,3 1,13 C1,28 28,43 28,43 C28,43 55,28 55,13 Z" fill="#FFDD00"/>
+    </g>
+
+    <!-- Coffee Cup Main Body -->
+    <g transform="translate(95, 20)">
+      <!-- Cup Bottom/Body (White with thick black outline) -->
+      <path d="M55,80 L315,80 C305,370 280,390 185,390 C90,390 65,370 55,80 Z" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round"/>
+
+      <!-- Cup Lid (Bottom rim brown part) -->
+      <path d="M25,55 L345,55 C355,55 365,72 355,85 C340,105 30,105 15,85 C5,72 15,55 25,55 Z" fill="#A86438" stroke="#000000" stroke-width="13" stroke-linejoin="round"/>
+
+      <!-- Cup Lid (Top brown part / cap) -->
+      <path d="M50,15 L320,15 C335,15 345,35 335,55 C320,70 50,70 35,55 C25,35 35,15 50,15 Z" fill="#8B4513" stroke="#000000" stroke-width="13" stroke-linejoin="round"/>
+
+      <!-- Cup Lid Top flat sheen -->
+      <ellipse cx="185" cy="22" rx="120" ry="8" fill="#A86438" opacity="0.6"/>
+
+      <!-- Text: BUY ME A COFFEE -->
+      <text x="185" y="175" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="900" font-size="52" fill="#000000" text-anchor="middle" letter-spacing="2">
+        BUY ME
+      </text>
+      <text x="185" y="240" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="900" font-size="58" fill="#000000" text-anchor="middle" letter-spacing="4">
+        A
+      </text>
+      <text x="185" y="315" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="900" font-size="52" fill="#000000" text-anchor="middle" letter-spacing="2">
+        COFFEE
+      </text>
+    </g>
+
+  </g>
+</svg>
