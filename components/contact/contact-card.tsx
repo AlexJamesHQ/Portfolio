@@ -40,7 +40,7 @@ export function ContactCard(): ReactNode {
                 <h2 className="font-serif text-[2.25rem] font-medium leading-[1.05] tracking-tight text-foreground sm:text-[2.75rem] lg:text-[3.25rem]">
                   Let&rsquo;s connect
                 </h2>
-                <p className="max-w-[29ch] text-[18px] leading-[1.4] tracking-tight text-foreground/65 sm:text-[22px] mb-2">
+                <p className="max-w-[29ch] text-[18px] leading-[1.4] tracking-tight text-foreground/65 sm:text-[22px] mb-6">
                   I&rsquo;m always open to discussing new projects, creative
                   ideas, or opportunities to be part of your visions. Just reach out!
                 </p>
@@ -62,12 +62,6 @@ export function ContactCard(): ReactNode {
                     lucideIcon={Users}
                   />
                   <SocialIcon
-                    href="https://github.com/DavidHDev"
-                    label="David H Dev"
-                    avatarSrc="https://github.com/DavidHDev.png"
-                    lucideIcon={Github}
-                  />
-                  <SocialIcon
                     href="mailto:alexjames7830@gmail.com"
                     label="Email"
                     lucideIcon={Mail}
@@ -85,9 +79,14 @@ export function ContactCard(): ReactNode {
                   <p className="text-[11px] tracking-tight text-foreground/45 font-mono">
                     普通のコーダーとゲーマーの男の子です
                   </p>
-                  <p className="text-[12px] tracking-tight text-foreground/50 mt-0.5">
+                  <a
+                    href="https://github.com/cognitiveshadows03"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[12px] tracking-tight text-foreground/50 hover:text-foreground transition-colors mt-0.5"
+                  >
                     Team &bull; Cognitive Shadows
-                  </p>
+                  </a>
                 </div>
               </div>
             </div>
