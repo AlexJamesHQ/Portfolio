@@ -1,0 +1,148 @@
+.tear-ticket {
+  position: relative;
+  display: inline-block;
+  width: var(--tt-w);
+  max-width: 100%;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+  transform-origin: center center;
+}
+
+.tear-ticket__stage {
+  position: relative;
+  width: var(--tt-w);
+  height: var(--tt-h);
+  transform-origin: top left;
+  transform: scale(var(--tt-fit));
+}
+
+.tear-ticket__plane {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.tear-ticket__piece {
+  position: absolute;
+  inset: 0;
+  pointer-events: auto;
+  will-change: transform;
+}
+
+.tear-ticket__piece--stub {
+  cursor: grab;
+  z-index: 5;
+  outline: none;
+}
+
+.tear-ticket__piece--stub:focus-visible {
+  outline: 2px solid #eab308;
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
+.tear-ticket[data-grabbing] .tear-ticket__piece--stub {
+  cursor: grabbing;
+}
+
+.tear-ticket__paper {
+  position: absolute;
+  inset: 0;
+  background: var(--tt-bg);
+  color: var(--tt-ink);
+  overflow: hidden;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.tear-ticket__piece--stub .tear-ticket__paper {
+  background: var(--tt-stub-bg);
+}
+
+.tear-ticket__edge {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: var(--tt-edge);
+  stroke-width: var(--tt-edge-w);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.tear-ticket__fibres {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: var(--tt-ink);
+  pointer-events: none;
+  z-index: 10;
+  overflow: visible;
+}
+
+.tear-ticket__art {
+  position: absolute;
+  inset: var(--tt-inset);
+  width: calc(var(--tt-body-w) * var(--tt-span) - var(--tt-inset) * 2);
+  border-radius: var(--tt-art-radius);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.tear-ticket__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  display: block;
+}
+
+.tear-ticket__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(10, 10, 12, 0.75) 0%,
+    rgba(10, 10, 12, 0.4) 50%,
+    rgba(10, 10, 12, 0.85) 100%
+  );
+  pointer-events: none;
+}
+
+.tear-ticket__content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 18px 24px;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.tear-ticket__content--stub {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 16px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* Recenter smoothly when torn */
+.tear-ticket[data-shift='x'] .tear-ticket__piece:not(.tear-ticket__piece--stub) {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateX(calc(var(--tt-stub) / 2)) !important;
+}
+
+.tear-ticket[data-shift='y'] .tear-ticket__piece:not(.tear-ticket__piece--stub) {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateY(calc(var(--tt-stub) / 2)) !important;
+}
