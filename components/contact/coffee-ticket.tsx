@@ -25,9 +25,9 @@ export function CoffeeTearTicket(): ReactNode {
         imageAlt="Buy Me a Coffee"
         imageRadius={0}
         scrim={false}
-        width={420}
-        height={180}
-        stubSize={135}
+        width={360}
+        height={160}
+        stubSize={115}
         background="#FFDD00"
         stubBackground="#FFF275"
         color="#000000"
@@ -44,7 +44,7 @@ export function CoffeeTearTicket(): ReactNode {
         stretch={26}
         resistance={0.4}
         onTear={handleTear}
-        className="w-full max-w-[420px]"
+        className="w-full max-w-[360px]"
         stub={
           <div className="flex flex-col items-center justify-between h-full py-3 select-none text-center">
             <div className="flex flex-col items-center gap-1">

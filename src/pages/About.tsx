@@ -7,24 +7,22 @@ import { FadeIn } from "@/components/ui/motion-primitives";
 import { SplitText } from "@/components/ui/split-text";
 import { Lanyard } from "@/components/ui/lanyard";
 
-const USER_PHOTO_URL =
-  "https://github.com/user-attachments/assets/39d57249-29e6-447a-8da9-3d9ad92cb796";
+const USER_PHOTO_URL = "https://github.com/AlexJamesHQ.png";
 
 export default function AboutPage(): ReactNode {
   return (
     <main id="main-content" className="flex flex-1 flex-col">
       {/* 3D Hanging Lanyard Overlay - in original position at top, extended canvas so pulling down overlaps text without clipping */}
-      <section className="relative w-full flex flex-col items-center pt-4 sm:pt-6 overflow-visible z-30">
-        <div style={{ width: "100%", height: "1100px" }} className="max-w-[440px] pointer-events-none -mb-[500px]">
+      <section className="relative w-full flex flex-col items-center pt-2 sm:pt-6 overflow-visible z-30">
+        <div style={{ width: "100%", height: "900px" }} className="max-w-[380px] sm:max-w-[440px] pointer-events-none -mb-[420px]">
           <Lanyard
             frontImage={USER_PHOTO_URL}
-            backImage="/github_qr.png"
             imageFit="cover"
             cardColor="#ffffff"
             orientation="portrait"
             finish="metallic"
             cornerRadius={0.3}
-            size={0.55}
+            size={0.46}
             anchor="center"
             strapLength={0.45}
             strapColor="#111111"

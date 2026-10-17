@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import type { CSSProperties } from 'react';
 import * as THREE from 'three';
+import QRCode from 'qrcode';
 import './Lanyard.css';
 
 type Orientation = 'portrait' | 'landscape';
@@ -369,14 +370,11 @@ const loadImage = (
     image.decoding = 'async';
     image.onload = () => resolve(image);
     image.onerror = () => {
-      if (url.includes('github.com/user-attachments') || url.includes('39d57249')) {
-        const fallback = new Image();
-        fallback.onload = () => resolve(fallback);
-        fallback.onerror = () => resolve(null);
-        fallback.src = '/lanyard_photo.png';
-        return;
-      }
-      resolve(null);
+      const fallback = new Image();
+      fallback.crossOrigin = 'anonymous';
+      fallback.onload = () => resolve(fallback);
+      fallback.onerror = () => resolve(null);
+      fallback.src = '/alexjames.png';
     };
     image.src = url;
   });
@@ -683,7 +681,7 @@ const paintFace = (
     ctx.font = '900 76px "Geist", system-ui, sans-serif';
     ctx.fillText('GITHUB', cw / 2, 350);
 
-    // Clean QR Code centered
+    // Clean QR Code centered (drawn locally to prevent CORS taint)
     const qrSize = 580;
     const qrX = (cw - qrSize) / 2;
     const qrY = 460;
@@ -694,12 +692,29 @@ const paintFace = (
     drawRoundedRect(ctx, qrX, qrY, qrSize, qrSize, 32);
     ctx.fill();
 
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+    ctx.strokeStyle = 'rgba(0, 0, 0, 0.15)';
     ctx.lineWidth = 4;
     ctx.stroke();
 
-    if (image) {
-      ctx.drawImage(image, qrX + 32, qrY + 32, qrSize - 64, qrSize - 64);
+    // Draw real, functional standard QR code for https://github.com/AlexJamesHQ
+    try {
+      const qrData = QRCode.create('https://github.com/AlexJamesHQ', { errorCorrectionLevel: 'M' });
+      const count = qrData.modules.size;
+      const padding = 44;
+      const cellSize = (qrSize - padding * 2) / count;
+      const startX = qrX + padding;
+      const startY = qrY + padding;
+
+      ctx.fillStyle = '#000000';
+      for (let r = 0; r < count; r++) {
+        for (let c = 0; c < count; c++) {
+          if (qrData.modules.get(r, c)) {
+            ctx.fillRect(startX + c * cellSize, startY + r * cellSize, cellSize + 0.35, cellSize + 0.35);
+          }
+        }
+      }
+    } catch {
+      // Fallback
     }
   }
 };
@@ -1074,6 +1089,21 @@ const Lanyard = ({
 
     const imageCache = new Map<string, Promise<HTMLImageElement | null>>();
     const images: Images = { front: null, back: null, strap: null };
+
+    // Immediately preload local avatar so the card front is NEVER empty or blank
+    const localAvatar = new Image();
+    localAvatar.crossOrigin = 'anonymous';
+    localAvatar.onload = () => {
+      if (!images.front) {
+        images.front = localAvatar;
+        paintFaces();
+      }
+    };
+    localAvatar.src = '/alexjames.png';
+    if (localAvatar.complete && localAvatar.naturalWidth > 0) {
+      images.front = localAvatar;
+    }
+
     const frontCanvas = document.createElement('canvas');
     const backCanvas = document.createElement('canvas');
     const strapCanvas = document.createElement('canvas');
@@ -1178,8 +1208,6 @@ const Lanyard = ({
         frontCanvas.height = height;
         backCanvas.width = width;
         backCanvas.height = height;
-        frontTexture.dispose();
-        backTexture.dispose();
       }
       paintFace(frontCanvas, images.front, color, s.imageFit, true);
       paintFace(backCanvas, images.back || images.front, color, s.imageFit, false);
@@ -1192,7 +1220,6 @@ const Lanyard = ({
       const s = settingsRef.current!;
       tileRatio = paintStrap(strapCanvas, images.strap, parseColor(s.strapColor, [0.07, 0.07, 0.07]));
       weave.repeat.set(2, 2 * tileRatio);
-      strapTexture.dispose();
       strapTexture.needsUpdate = true;
       start();
     };
@@ -1395,10 +1422,14 @@ const Lanyard = ({
     };
 
     const render = () => {
-      cardGroup.position.copy(sim.body.position);
-      cardGroup.quaternion.copy(sim.body.quaternion);
-      updateBand();
-      renderer.render(scene, camera);
+      try {
+        cardGroup.position.copy(sim.body.position);
+        cardGroup.quaternion.copy(sim.body.quaternion);
+        updateBand();
+        renderer.render(scene, camera);
+      } catch {
+        // Prevent fatal render errors from breaking the animation cycle
+      }
     };
 
     const physics = (): Physics => {
@@ -1431,19 +1462,32 @@ const Lanyard = ({
     const tick = (now: number) => {
       raf = 0;
       if (!alive) return;
-      const dt = Math.min(1 / 30, Math.max(1 / 240, (now - last) / 1000));
-      last = now;
-      time += dt;
-      const current = physics();
-      stepSimulation(sim, dt, current, time);
-      const body = sim.body;
-      if (!Number.isFinite(body.position.x + body.position.y + body.position.z + body.quaternion.w)) {
-        sim.grab = null;
-        placeHanging(sim, layout, false);
+      try {
+        const dt = Math.min(1 / 30, Math.max(1 / 240, (now - last) / 1000));
+        last = now;
+        time += dt;
+        const current = physics();
+        stepSimulation(sim, dt, current, time);
+        const body = sim.body;
+        let hasNan = !Number.isFinite(body.position.x + body.position.y + body.position.z + body.quaternion.w);
+        if (!hasNan) {
+          for (let i = 0; i <= JOINTS; i++) {
+            if (!Number.isFinite(sim.nodes[i].x + sim.nodes[i].y + sim.nodes[i].z)) {
+              hasNan = true;
+              break;
+            }
+          }
+        }
+        if (hasNan) {
+          sim.grab = null;
+          placeHanging(sim, layout, false);
+        }
+        render();
+        const resting = sim.calm > 1.2 && !sim.grab && current.breeze === 0;
+        if (visible && !resting) raf = requestAnimationFrame(tick);
+      } catch {
+        if (visible && alive) raf = requestAnimationFrame(tick);
       }
-      render();
-      const resting = sim.calm > 1.2 && !sim.grab && current.breeze === 0;
-      if (visible && !resting) raf = requestAnimationFrame(tick);
     };
 
     const start = () => {
@@ -1568,6 +1612,7 @@ const Lanyard = ({
     window.addEventListener('touchstart', onWindowTouchStart, { passive: true });
 
     const resize = () => {
+      if (!container || container.clientWidth < 10 || container.clientHeight < 10) return;
       view.width = Math.max(1, container.clientWidth);
       view.height = Math.max(1, container.clientHeight);
       renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
@@ -1575,6 +1620,18 @@ const Lanyard = ({
       apply();
       render();
     };
+
+    const onContextLost = (e: Event) => {
+      e.preventDefault();
+      cancelAnimationFrame(raf);
+      raf = 0;
+    };
+    const onContextRestored = () => {
+      apply();
+      start();
+    };
+    canvas.addEventListener('webglcontextlost', onContextLost);
+    canvas.addEventListener('webglcontextrestored', onContextRestored);
 
     const resizeObserver = new ResizeObserver(resize);
     resizeObserver.observe(container);
@@ -1604,6 +1661,8 @@ const Lanyard = ({
       canvas.removeEventListener('pointercancel', onPointerUp);
       canvas.removeEventListener('lostpointercapture', onPointerUp);
       canvas.removeEventListener('touchstart', onTouchStart);
+      canvas.removeEventListener('webglcontextlost', onContextLost);
+      canvas.removeEventListener('webglcontextrestored', onContextRestored);
       window.removeEventListener('pointermove', onWindowPointerMove);
       window.removeEventListener('touchstart', onWindowTouchStart);
       [bodyMesh, frontMesh, backMesh, ring, clampMesh, eyelet, band].forEach(mesh => mesh.geometry?.dispose());
