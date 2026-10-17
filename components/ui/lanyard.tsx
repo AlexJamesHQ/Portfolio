@@ -1616,7 +1616,13 @@ const Lanyard = ({
   }, []);
 
   return (
-    <div ref={containerRef} className={`lanyard relative w-full h-full overflow-hidden ${className}`.trim()} style={style} />
+    <>
+      <style>{`
+        .lanyard { position: relative; width: 100%; height: 100%; overflow: visible; }
+        .lanyard-canvas { display: block; width: 100%; height: 100%; }
+      `}</style>
+      <div ref={containerRef} className={`lanyard relative w-full h-full overflow-hidden ${className}`.trim()} style={style} />
+    </>
   );
 };
 
