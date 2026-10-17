@@ -85,9 +85,6 @@ export function ContactCard(): ReactNode {
                   <p className="text-[11px] tracking-tight text-foreground/50 font-mono">
                     普通のコーダーとゲーマーの男の子です
                   </p>
-                  <p className="text-[12px] tracking-tight text-foreground/55 mt-0.5">
-                    Team &bull; Cognitive Shadows
-                  </p>
                 </div>
               </div>
             </div>
