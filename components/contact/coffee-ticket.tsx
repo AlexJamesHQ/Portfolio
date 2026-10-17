@@ -6,7 +6,8 @@ import { Coffee, Scissors } from 'lucide-react';
 
 export function CoffeeTearTicket(): ReactNode {
   const handleTear = () => {
-    window.open('https://buymeacoffee.com', '_blank', 'noopener,noreferrer');
+    const url = 'https://wa.me/8801977547920?text=Hello%20Alex%20James!%20I%20would%20love%20to%20connect%20with%20you.';
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   return (
