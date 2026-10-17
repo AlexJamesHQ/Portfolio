@@ -1,19 +1,48 @@
 import type { ReactNode } from "react";
 import { Experience } from "@/components/about/experience";
-import { PolaroidStrip } from "@/components/about/polaroid-strip";
 import { Skills } from "@/components/about/skills";
 import { Stack } from "@/components/about/stack";
 import { ContactCard } from "@/components/contact/contact-card";
 import { FadeIn } from "@/components/ui/motion-primitives";
 import { SplitText } from "@/components/ui/split-text";
+import { Lanyard } from "@/components/ui/lanyard";
+
+const USER_PHOTO_URL =
+  "https://github.com/user-attachments/assets/39d57249-29e6-447a-8da9-3d9ad92cb796";
 
 export default function AboutPage(): ReactNode {
   return (
     <main id="main-content" className="flex flex-1 flex-col">
-      <section className="mx-auto w-full max-w-312 pt-40 sm:pt-56">
-        <PolaroidStrip />
+      {/* 3D Hanging Lanyard Overlay - in original position at top, extended canvas so pulling down overlaps text without clipping */}
+      <section className="relative w-full flex flex-col items-center pt-4 sm:pt-6 overflow-visible z-30">
+        <div style={{ width: "100%", height: "1100px" }} className="max-w-[440px] pointer-events-none -mb-[500px]">
+          <Lanyard
+            frontImage={USER_PHOTO_URL}
+            backImage="/github_qr.png"
+            imageFit="cover"
+            cardColor="#ffffff"
+            orientation="portrait"
+            finish="metallic"
+            cornerRadius={0.3}
+            size={0.55}
+            anchor="center"
+            strapLength={0.45}
+            strapColor="#111111"
+            strapWidth={0.65}
+            metal="silver"
+            gravity={1}
+            damping={0.5}
+            elasticity={0.5}
+            breeze={0.5}
+            interactive={true}
+            intro={true}
+            className="w-full h-full bg-transparent"
+          />
+        </div>
       </section>
-      <section className="mx-auto w-full max-w-160 px-6 pt-20 pb-16 sm:px-10 sm:pt-28 sm:pb-24">
+
+      {/* Main bio section positioned to overlap naturally beneath the hanging lanyard */}
+      <section className="relative z-10 mx-auto w-full max-w-160 px-6 -mt-20 sm:-mt-28 pb-16 sm:px-10 sm:pb-24">
         <FadeIn delay={0.5}>
           <div className="rounded-4xl border border-foreground/5 bg-foreground/1.5 p-8 sm:p-12 dark:bg-foreground/3">
             <div className="flex flex-col gap-2">
