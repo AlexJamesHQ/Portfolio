@@ -22,8 +22,8 @@ export function CoffeeTearTicket(): ReactNode {
     <div className="flex flex-col items-start w-full">
       <TearTicket
         image="/buymeacoffee.svg"
-        imageAlt="Buy Me a Coffee Sticker"
-        imageRadius={12}
+        imageAlt="Buy Me a Coffee"
+        imageRadius={0}
         scrim={false}
         width={420}
         height={180}
