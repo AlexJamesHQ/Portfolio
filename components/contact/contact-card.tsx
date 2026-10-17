@@ -20,10 +20,10 @@ function TelegramIcon({ className = "h-4 w-4" }: { className?: string }): ReactN
 
 export function ContactCard(): ReactNode {
   return (
-    <section className="mx-auto my-12 w-full max-w-275 px-6 sm:my-20 sm:px-10">
+    <section className="mx-auto my-10 w-full max-w-275 px-4 sm:my-20 sm:px-10">
       <FadeIn>
-        <div className="relative w-full overflow-hidden rounded-4xl border border-foreground/8 bg-background p-1.5 shadow-sm">
-          <div className="relative w-full overflow-hidden rounded-[1.6rem]">
+        <div className="relative w-full overflow-hidden rounded-3xl sm:rounded-4xl border border-foreground/8 bg-background p-1.5 shadow-sm">
+          <div className="relative w-full overflow-hidden rounded-[1.3rem] sm:rounded-[1.6rem]">
             <div
               aria-hidden="true"
               className="pointer-events-none absolute inset-0 opacity-45 dark:opacity-25"
@@ -35,20 +35,20 @@ export function ContactCard(): ReactNode {
               <ShaderFlow scale={3} brightness={3} />
             </div>
 
-            <div className="relative grid gap-8 p-6 sm:gap-10 sm:p-7 md:grid-cols-[1.2fr_1fr] md:items-stretch md:gap-6 md:p-6">
-              <div className="flex flex-col gap-5">
-                <h2 className="font-serif text-[2.25rem] font-medium leading-[1.05] tracking-tight text-foreground sm:text-[2.75rem] lg:text-[3.25rem]">
+            <div className="relative grid gap-6 p-4 sm:gap-10 sm:p-7 md:grid-cols-[1.2fr_1fr] md:items-stretch md:gap-6 md:p-6">
+              <div className="flex flex-col gap-4 sm:gap-5">
+                <h2 className="font-serif text-[2rem] sm:text-[2.75rem] lg:text-[3.25rem] font-medium leading-[1.05] tracking-tight text-foreground">
                   Let&rsquo;s connect
                 </h2>
-                <p className="max-w-[29ch] text-[18px] leading-[1.4] tracking-tight text-foreground/65 sm:text-[22px] mb-2">
+                <p className="max-w-[29ch] text-[16px] sm:text-[22px] leading-[1.4] tracking-tight text-foreground/65 mb-1 sm:mb-2">
                   I&rsquo;m always open to discussing new projects, creative
                   ideas, or opportunities to be part of your visions. Just reach out!
                 </p>
                 <ContactCardCtas />
               </div>
 
-              <div className="border-foreground/8 flex flex-col items-center justify-center gap-6 rounded-[1.1rem] border bg-background p-6 sm:p-8">
-                <div className="flex items-center gap-3 opacity-90">
+              <div className="border-foreground/8 flex flex-col items-center justify-center gap-5 sm:gap-6 rounded-[1.1rem] border bg-background/80 p-4 sm:p-8 backdrop-blur-xs">
+                <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 opacity-95 max-w-full">
                   <SocialIcon
                     href="https://github.com/AlexJamesHQ"
                     label="GitHub"
@@ -79,13 +79,13 @@ export function ContactCard(): ReactNode {
                   />
                 </div>
                 <div className="flex flex-col items-center gap-1 text-center">
-                  <p className="text-[13px] tracking-tight text-foreground/80 font-medium">
+                  <p className="text-[13px] tracking-tight text-foreground/85 font-medium">
                     Lead Developer Alex James
                   </p>
-                  <p className="text-[11px] tracking-tight text-foreground/45 font-mono">
+                  <p className="text-[11px] tracking-tight text-foreground/50 font-mono">
                     普通のコーダーとゲーマーの男の子です
                   </p>
-                  <p className="text-[12px] tracking-tight text-foreground/50 mt-0.5">
+                  <p className="text-[12px] tracking-tight text-foreground/55 mt-0.5">
                     Team &bull; Cognitive Shadows
                   </p>
                 </div>
@@ -122,7 +122,7 @@ function SocialIcon({
       href={href}
       aria-label={label}
       title={label}
-      className="border-foreground/8 hover:border-foreground/20 focus-ring inline-flex h-11 w-11 items-center justify-center rounded-xl border bg-background text-foreground/75 transition-all hover:text-foreground hover:scale-105 overflow-hidden shadow-xs"
+      className="border-foreground/8 hover:border-foreground/20 focus-ring inline-flex h-9.5 w-9.5 sm:h-11 sm:w-11 shrink-0 items-center justify-center rounded-xl border bg-background text-foreground/75 transition-all hover:text-foreground hover:scale-105 overflow-hidden shadow-xs"
       {...props}
     >
       {avatarSrc && !imgError ? (
@@ -131,7 +131,7 @@ function SocialIcon({
           alt={label}
           width={24}
           height={24}
-          className="h-6 w-6 rounded-full object-cover"
+          className="h-5.5 w-5.5 sm:h-6 sm:w-6 rounded-full object-cover"
           onError={() => setImgError(true)}
         />
       ) : LucideIcon ? (

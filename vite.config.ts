@@ -4,15 +4,16 @@ import path from 'path';
 import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
+  const rootDir = import.meta.dirname || path.resolve();
   return {
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
-        'next/navigation': path.resolve(__dirname, 'src/shims/next-navigation.tsx'),
-        'next/link': path.resolve(__dirname, 'src/shims/next-link.tsx'),
-        'next/image': path.resolve(__dirname, 'src/shims/next-image.tsx'),
-        'next-themes': path.resolve(__dirname, 'src/shims/theme-provider.tsx'),
-        '@': path.resolve(__dirname, '.'),
+        'next/navigation': path.resolve(rootDir, 'src/shims/next-navigation.tsx'),
+        'next/link': path.resolve(rootDir, 'src/shims/next-link.tsx'),
+        'next/image': path.resolve(rootDir, 'src/shims/next-image.tsx'),
+        'next-themes': path.resolve(rootDir, 'src/shims/theme-provider.tsx'),
+        '@': path.resolve(rootDir, '.'),
       },
     },
     server: {
