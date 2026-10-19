@@ -14,7 +14,7 @@ export function ContactCard(): ReactNode {
   return (
     <section className="mx-auto my-10 w-full max-w-275 px-4 sm:my-20 sm:px-10">
       <FadeIn>
-        <div className="relative w-full overflow-hidden rounded-3xl sm:rounded-4xl border border-foreground/8 bg-background p-1.5 shadow-sm transition-all duration-500 hover:border-foreground/25 hover:shadow-xl hover:-translate-y-1">
+        <div className="relative w-full overflow-hidden rounded-3xl sm:rounded-4xl border border-foreground/8 bg-background p-1.5 shadow-sm">
           <div className="relative w-full overflow-hidden rounded-[1.3rem] sm:rounded-[1.6rem]">
             <div
               aria-hidden="true"
