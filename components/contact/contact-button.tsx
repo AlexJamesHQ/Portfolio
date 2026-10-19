@@ -12,11 +12,12 @@ export function ContactButton(): ReactNode {
   const [open, setOpen] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  const handleCopy = async (): Promise<void> => {
+  const handlePress = async (): Promise<void> => {
+    setOpen(true);
     try {
       await navigator.clipboard.writeText(EMAIL);
       setCopied(true);
-      window.setTimeout(() => setCopied(false), 1600);
+      window.setTimeout(() => setCopied(false), 2000);
     } catch {
       const ta = document.createElement("textarea");
       ta.value = EMAIL;
@@ -27,7 +28,7 @@ export function ContactButton(): ReactNode {
       try {
         document.execCommand("copy");
         setCopied(true);
-        window.setTimeout(() => setCopied(false), 1600);
+        window.setTimeout(() => setCopied(false), 2000);
       } catch {}
       document.body.removeChild(ta);
     }
@@ -37,34 +38,34 @@ export function ContactButton(): ReactNode {
     <motion.button
       type="button"
       layout
-      onClick={handleCopy}
-      onHoverStart={() => setOpen(true)}
-      onHoverEnd={() => setOpen(false)}
+      onClick={handlePress}
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
       onFocus={() => setOpen(true)}
       onBlur={() => setOpen(false)}
       aria-label={
         copied ? "Email copied" : open ? `Copy ${EMAIL}` : "Show email"
       }
-      transition={{ layout: { duration: 0.55, ease: EASE } }}
+      transition={{ layout: { duration: 0.25, ease: EASE } }}
       style={{ borderRadius: 12 }}
-      className="focus-ring relative inline-flex h-11 cursor-pointer items-center justify-center bg-foreground px-5 text-sm font-medium text-background"
+      className="focus-ring relative inline-flex h-11 cursor-pointer items-center justify-center bg-foreground px-5 text-sm font-medium text-background select-none"
     >
       <motion.span
         layout="position"
-        className="relative inline-flex items-center"
+        className="relative inline-flex items-center text-background"
       >
         <AnimatePresence initial={false} mode="popLayout">
           {open ? (
             <motion.span
               key="email"
               layout="position"
-              initial={{ opacity: 0, filter: "blur(8px)" }}
-              animate={{ opacity: 1, filter: "blur(0px)" }}
-              exit={{ opacity: 0, filter: "blur(8px)" }}
-              transition={{ duration: 0.35, ease: EASE }}
-              className="inline-flex items-center gap-2 whitespace-nowrap"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.15, ease: EASE }}
+              className="inline-flex items-center gap-2 whitespace-nowrap text-background"
             >
-              <span className="relative inline-flex h-4 w-4 shrink-0 items-center justify-center">
+              <span className="relative inline-flex h-4 w-4 shrink-0 items-center justify-center text-background">
                 <AnimatePresence initial={false} mode="wait">
                   {copied ? (
                     <motion.span
@@ -72,10 +73,10 @@ export function ContactButton(): ReactNode {
                       initial={{ scale: 0.5, opacity: 0 }}
                       animate={{ scale: 1, opacity: 1 }}
                       exit={{ scale: 0.5, opacity: 0 }}
-                      transition={{ duration: 0.2, ease: EASE }}
-                      className="inline-flex"
+                      transition={{ duration: 0.1, ease: EASE }}
+                      className="inline-flex text-background"
                     >
-                      <Check className="h-4 w-4" aria-hidden="true" />
+                      <Check className="h-4 w-4 text-background" aria-hidden="true" />
                     </motion.span>
                   ) : (
                     <motion.span
@@ -83,28 +84,28 @@ export function ContactButton(): ReactNode {
                       initial={{ scale: 0.5, opacity: 0 }}
                       animate={{ scale: 1, opacity: 1 }}
                       exit={{ scale: 0.5, opacity: 0 }}
-                      transition={{ duration: 0.2, ease: EASE }}
-                      className="inline-flex"
+                      transition={{ duration: 0.1, ease: EASE }}
+                      className="inline-flex text-background"
                     >
-                      <Copy className="h-4 w-4" aria-hidden="true" />
+                      <Copy className="h-4 w-4 text-background" aria-hidden="true" />
                     </motion.span>
                   )}
                 </AnimatePresence>
               </span>
-              <span className="tabular-nums">{EMAIL}</span>
+              <span className="tabular-nums text-background font-mono text-xs sm:text-sm">{EMAIL}</span>
             </motion.span>
           ) : (
             <motion.span
               key="contact"
               layout="position"
-              initial={{ opacity: 0, filter: "blur(8px)" }}
-              animate={{ opacity: 1, filter: "blur(0px)" }}
-              exit={{ opacity: 0, filter: "blur(8px)" }}
-              transition={{ duration: 0.35, ease: EASE }}
-              className="inline-flex items-center gap-2 whitespace-nowrap"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.15, ease: EASE }}
+              className="inline-flex items-center gap-2 whitespace-nowrap text-background"
             >
-              <Mail className="h-4 w-4 shrink-0" aria-hidden="true" />
-              <span>Contact</span>
+              <Mail className="h-4 w-4 shrink-0 text-background" aria-hidden="true" />
+              <span className="text-background">Contact</span>
             </motion.span>
           )}
         </AnimatePresence>
