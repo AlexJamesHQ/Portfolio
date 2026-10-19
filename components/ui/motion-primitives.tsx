@@ -10,16 +10,19 @@ export function FadeIn({
   delay = 0,
   duration = 0.8,
   className,
+  once = false,
 }: {
   children: ReactNode;
   delay?: number;
   duration?: number;
   className?: string;
+  once?: boolean;
 }): ReactNode {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 30, scale: 0.96 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once, amount: 0.1 }}
       transition={{ duration, delay, ease: EASE }}
       className={className}
     >
