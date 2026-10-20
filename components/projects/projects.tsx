@@ -35,19 +35,6 @@ type Project = {
 
 const PROJECTS: Project[] = [
   {
-    id: "lunartune",
-    icon: Music,
-    iconLabel: "LunarTune",
-    title: "LunarTune",
-    description: "Yet another awesome YT",
-    meta: "Lead Developer, 2026",
-    imageRatio: 16 / 9,
-    image:
-      "https://github.com/user-attachments/assets/ed6ce5e4-b900-43ee-93e0-305bd711e370",
-    imageAlt: "LunarTune project thumbnail",
-    link: "https://lunartune-03.vercel.app/",
-  },
-  {
     id: "loom",
     icon: Sparkles,
     iconLabel: "LOOM",
