@@ -21,8 +21,6 @@ export const siteConfig = {
   url: "https://example.com",
   ogImage: "https://github.com/AlexJamesHQ.png",
   creator: "@AlexJamesHQ",
-  telegram: "https://t.me/ALEX_JAMES_DEV",
-  team: "https://github.com/cognitiveshadows03",
   authors: [
     {
       name: "Alex James",
