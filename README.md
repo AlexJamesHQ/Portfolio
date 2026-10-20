@@ -112,6 +112,5 @@ npm run preview
 - Lead Developer
 - GitHub: [@AlexJamesHQ](https://github.com/AlexJamesHQ)
 - Organization: [Cognitive Shadows](https://github.com/cognitiveshadows03)
-- Organization: [David](https://github.com/DavidHDev)
 - Telegram: [@ALEX_JAMES_DEV](https://t.me/ALEX_JAMES_DEV)
 - Email: [alexjames7830@gmail.com](mailto:alexjames7830@gmail.com)
