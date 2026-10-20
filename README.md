@@ -1,4 +1,4 @@
-# Alex James — 普通のコーダーとゲーマーの男の子です
+# Alex James
 
 > **Ordinary coder & gamer boy.** A personal portfolio and creative engineering showcase built with **React 19**, **TypeScript**, **Tailwind CSS v4**, **GSAP**, **Motion**, **Matter.js**, and **OGL (WebGL)**.
 

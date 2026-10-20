@@ -15,9 +15,9 @@ export type Metadata = {
 };
 
 export const siteConfig = {
-  name: "Alex James — 普通のコーダーとゲーマーの男の子です",
+  name: "Alex James",
   description:
-    "Alex James — 普通のコーダーとゲーマーの男の子です (Ordinary coder & gamer boy). Interfaces, interactive experiences, and software that feel calm, considered, and quietly fast.",
+    "Alex James — Ordinary coder & gamer boy. Interfaces, interactive experiences, and software that feel calm, considered, and quietly fast.",
   url: "https://example.com",
   ogImage: "https://github.com/AlexJamesHQ.png",
   creator: "@AlexJamesHQ",

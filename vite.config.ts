@@ -14,11 +14,12 @@ export default defineConfig(() => {
         registerType: 'autoUpdate',
         includeAssets: ['**/*.{js,css,html,ico,png,svg,webp}'],
         manifest: {
-          name: 'Alex James - Portfolio',
-          short_name: 'AlexJames',
-          description: 'Personal portfolio and creative engineering showcase of Alex James, Product Designer and Full-Stack Engineer.',
-          theme_color: '#0a0a0a',
-          background_color: '#0a0a0a',
+          id: '/',
+          name: 'Alex James',
+          short_name: 'Alex James',
+          description: 'Personal creative engineering showcase of Alex James, Product Designer and Full-Stack Engineer.',
+          theme_color: '#ffffff',
+          background_color: '#ffffff',
           display: 'standalone',
           start_url: '/',
           scope: '/',
@@ -27,6 +28,19 @@ export default defineConfig(() => {
               src: '/icon-192.png',
               sizes: '192x192',
               type: 'image/png',
+              purpose: 'any',
+            },
+            {
+              src: '/icon-512.png',
+              sizes: '512x512',
+              type: 'image/png',
+              purpose: 'any',
+            },
+            {
+              src: '/icon-maskable-512.png',
+              sizes: '512x512',
+              type: 'image/png',
+              purpose: 'maskable',
             },
           ],
         },
@@ -37,12 +51,12 @@ export default defineConfig(() => {
               // Catch all images, including cross-origin ones (GitHub, Dribbble)
               urlPattern: ({ request }) => request.destination === 'image' ||
                 /\.(?:png|jpg|jpeg|svg|gif|webp)$/.test(request.url),
-              handler: 'CacheFirst',
+              handler: 'StaleWhileRevalidate',
               options: {
-                cacheName: 'images-cache',
+                cacheName: 'images-cache-v2',
                 expiration: {
                   maxEntries: 100, // Increased limit for all images
-                  maxAgeSeconds: 60 * 60 * 24 * 30, // 30 days
+                  maxAgeSeconds: 60 * 60 * 24 * 7, // 7 days
                 },
                 cacheableResponse: {
                   statuses: [0, 200], // 0 is required to cache opaque cross-origin responses
@@ -70,10 +84,7 @@ export default defineConfig(() => {
       host: '0.0.0.0',
       port: 3000,
       allowedHosts: true as const,
-      // HMR is disabled in AI Studio via DISABLE_HMR env var.
-      // Do not modify—file watching is disabled to prevent flickering during agent edits.
       hmr: process.env.DISABLE_HMR !== 'true',
-      // Disable file watching when DISABLE_HMR is true to save CPU during agent edits.
       watch: process.env.DISABLE_HMR === 'true' ? null : {},
     },
   };
