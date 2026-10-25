@@ -1,3 +1,7 @@
+<p align="center">
+  <img width="1920" height="1080" alt="1000222434" src="https://github.com/user-attachments/assets/2ca94d7e-a04c-4e3f-917f-bc09b94ee2e7" />
+</div>
+
 # Alex James
 
 > **Ordinary coder & gamer boy.** A personal portfolio and creative engineering showcase built with **React 19**, **TypeScript**, **Tailwind CSS v4**, **GSAP**, **Motion**, **Matter.js**, and **OGL (WebGL)**.
