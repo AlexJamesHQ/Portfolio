@@ -11,7 +11,7 @@ Designed for fluid interactions, typography animations, and real-time physics.
 ---
 ---
 
-## ✨ Key Features
+## ✨ Key Features.
 
 - **SplitText Typography (GSAP & ScrollTrigger):**
   - Character-by-character and word-by-word reveal animations with interactive physics-based lift hover effects.
